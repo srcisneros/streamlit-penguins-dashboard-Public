@@ -1,27 +1,23 @@
-# 📋 Informe de Desarrollo
-
-## 🏷️ Streamlit Penguins Dashboard — Análisis de Datos con Gitflow
+# 📋 Informe de Desarrollo — Streamlit Penguins Dashboard
 
 ---
 
 ### 👥 Integrantes
 
-| 👤 Nombre | 🎓 Carrera |
+| Nombre | Carrera |
 |---|---|
-| **Andre Yamada** | Ingeniería en Software — ESPOCH |
-| **Ruperto Cisneros** | Ingeniería en Software — ESPOCH |
+| **Andre Yamada** | Ingeniería en Software |
+| **Ruperto Cisneros** | Ingeniería en Software |
 
 ---
 
-## 📌 1. Objetivo
+## 1. Objetivo
 
-Desarrollar una aplicación interactiva en **Streamlit** para el análisis exploratorio del dataset **Palmer Penguins**, aplicando el flujo de trabajo **Gitflow** para gestionar el control de versiones durante todo el ciclo de desarrollo.
+Desarrollar una aplicación interactiva en Streamlit para el análisis exploratorio del dataset Palmer Penguins, aplicando Gitflow como flujo de control de versiones.
 
 ---
 
-## 🗺️ 2. Flujo Gitflow Utilizado
-
-El proyecto fue desarrollado siguiendo estrictamente el modelo **Gitflow**, sin resolución de conflictos ni uso de la rama hotfix, tal como se indicó en los requerimientos de la tarea.
+## 2. Flujo Gitflow Aplicado
 
 ```
 main ─────────────────────────────────────── ● v1.0.0
@@ -36,214 +32,96 @@ develop ── ● ── ● ── ● ── ● ── ● ─────�
             └───────────────── feature/validacion
 ```
 
-> 🔑 **Cada funcionalidad se desarrolló en su propia rama `feature/*`**, se integró a `develop` mediante merge, y finalmente se publicó a `main` a través de `release/1.0.0` con el tag `v1.0.0`.
+---
+
+## 3. Desarrollo por Features
+
+### 3.1 Feature: Funciones de Validación
+
+📂 Rama: `feature/validacion`
+
+Se implementaron las funciones de validación y carga de archivos CSV en `src/data_utils.py`, incluyendo validación de extensión, manejo de codificaciones y funciones para obtener columnas numéricas, categóricas y filtrar registros.
 
 ---
 
-## 🔧 3. Procedimiento Paso a Paso
+### 3.2 Feature: Aplicación Principal — Dashboard
 
----
+📂 Rama: `feature/app-principal`
 
-### 🟢 3.1 Preparación del Entorno
+Se desarrolló la aplicación principal en `app.py` con carga de archivos CSV y tres tipos de gráficos interactivos.
 
-Se creó el directorio del proyecto, se inicializó el repositorio Git, se configuró el entorno virtual de Python y se instalaron las dependencias.
+#### 📸 Dashboard — Gráfico de barras y gráfico de líneas
 
-```bash
-mkdir streamlit-penguins-dashboard
-cd streamlit-penguins-dashboard
-git init
-python3 -m venv dash
-source dash/bin/activate
-pip install streamlit pandas plotly pytest
-```
+![Dashboard gráficos](img/dashboard-graficos.png)
 
-📦 **Dependencias instaladas:**
-
-| Paquete | Versión | Propósito |
-|---|---|---|
-| Streamlit | 1.59+ | Framework de dashboards |
-| Pandas | 3.0+ | Manipulación de datos |
-| Plotly | 6.0+ | Gráficos interactivos |
-| Pytest | 9.1+ | Pruebas unitarias |
-
-✅ Se realizó el primer commit en `main` y se creó la rama `develop`:
-
-```bash
-git add .
-git commit -m "chore: estructura inicial del proyecto"
-git checkout -b develop
-```
-
----
-
-### 🔵 3.2 Feature 1: Funciones de Validación
-
-> 📂 Rama: `feature/validacion`
-
-Se implementó el archivo `src/data_utils.py` con cinco funciones utilitarias:
-
-| # | Función | Descripción |
-|---|---|---|
-| 1 | `validar_extension_csv()` | Verifica que el archivo tenga extensión `.csv` |
-| 2 | `cargar_csv()` | Carga un CSV probando codificaciones: utf-8, latin1, cp1252 |
-| 3 | `obtener_columnas_numericas()` | Retorna las columnas de tipo numérico |
-| 4 | `obtener_columnas_categoricas()` | Retorna las columnas de tipo texto/categoría |
-| 5 | `filtrar_registros()` | Filtra los primeros o últimos N registros |
-
-```bash
-git checkout -b feature/validacion
-# ... desarrollo de data_utils.py ...
-git commit -m "feat: crear funciones de validacion CSV y utilidades de datos"
-git checkout develop
-git merge feature/validacion
-```
-
----
-
-### 🟣 3.3 Feature 2: Aplicación Principal Streamlit
-
-> 📂 Rama: `feature/app-principal`
-
-Se creó el archivo `app.py` con la aplicación principal que incluye:
-
-- 📁 **Carga de archivos CSV** desde la barra lateral con validaciones.
-- 📊 **Gráfico de barras** — Suma de valores numéricos agrupados por categoría.
-- 📈 **Gráfico de líneas** — Evolución de una variable numérica.
-- 🔎 **Gráfico de dispersión** — Relación entre dos variables numéricas.
-
-#### 📸 Captura — Dashboard con gráficos de barras y líneas:
-
-![Dashboard con gráficos](img/dashboard-graficos.png)
-
-#### 📸 Captura — Gráfico de dispersión:
+#### 📸 Dashboard — Gráfico de dispersión
 
 ![Gráfico de dispersión](img/grafico-dispersion.png)
 
-```bash
-git checkout -b feature/app-principal
-# ... desarrollo de app.py ...
-git commit -m "feat: crear aplicacion principal Streamlit con carga CSV y graficas"
-git checkout develop
-git merge feature/app-principal
-```
+---
+
+### 3.3 Feature: Visualización Tabular
+
+📂 Rama: `feature/visualizacion-tabular`
+
+Se agregó la funcionalidad de visualización tabular que permite seleccionar la cantidad de registros y la posición de lectura (inicio o final del dataset).
+
+#### 📸 Visualización tabular de datos
+
+![Visualización tabular](img/visualizacion-tabular.png)
 
 ---
 
-### 🟠 3.4 Feature 3: Visualización Tabular
+### 3.4 Feature: Pruebas con Pytest
 
-> 📂 Rama: `feature/visualizacion-tabular`
+📂 Rama: `feature/pruebas-pytest`
 
-Se agregó al final de `app.py` una sección de visualización tabular que permite:
+Se implementaron 9 pruebas unitarias que validan las funciones de carga, validación y filtrado de datos.
 
-- 🔢 Seleccionar la **cantidad de registros** a visualizar (de 1 hasta el total).
-- 🔄 Elegir la **posición**: desde el **Inicio** o desde el **Final** del dataset.
+| # | Prueba | Resultado |
+|---|---|---|
+| 1 | Validar extensión CSV correcta | ✅ PASSED |
+| 2 | Validar extensión CSV mayúscula | ✅ PASSED |
+| 3 | Validar extensión incorrecta | ✅ PASSED |
+| 4 | Obtener columnas numéricas | ✅ PASSED |
+| 5 | Obtener columnas categóricas | ✅ PASSED |
+| 6 | Filtrar registros desde el inicio | ✅ PASSED |
+| 7 | Filtrar registros desde el final | ✅ PASSED |
+| 8 | Error con cantidad inválida | ✅ PASSED |
+| 9 | Error con posición inválida | ✅ PASSED |
 
-```bash
-git checkout -b feature/visualizacion-tabular
-# ... desarrollo ...
-git commit -m "feat: agregar visualizacion tabular con filtro de registros"
-git checkout develop
-git merge feature/visualizacion-tabular
-```
-
----
-
-### 🔴 3.5 Feature 4: Pruebas con Pytest
-
-> 📂 Rama: `feature/pruebas-pytest`
-
-Se implementaron **9 pruebas unitarias** en `tests/test_data_utils.py` que validan el correcto funcionamiento de todas las funciones utilitarias:
-
-| # | Prueba | Qué valida | Resultado |
-|---|---|---|---|
-| 1 | `test_validar_extension_csv_correcta` | Archivo `.csv` es aceptado | ✅ PASSED |
-| 2 | `test_validar_extension_csv_mayuscula` | Archivo `.CSV` también es aceptado | ✅ PASSED |
-| 3 | `test_validar_extension_csv_incorrecta` | Archivo `.xlsx` es rechazado | ✅ PASSED |
-| 4 | `test_columnas_numericas_penguins` | Detecta correctamente las columnas numéricas | ✅ PASSED |
-| 5 | `test_columnas_categoricas_penguins` | Detecta correctamente las columnas categóricas | ✅ PASSED |
-| 6 | `test_filtrar_registros_inicio_penguins` | Filtra los primeros N registros correctamente | ✅ PASSED |
-| 7 | `test_filtrar_registros_final_penguins` | Filtra los últimos N registros correctamente | ✅ PASSED |
-| 8 | `test_filtrar_registros_cantidad_invalida` | Lanza error con cantidad 0 | ✅ PASSED |
-| 9 | `test_filtrar_registros_posicion_invalida` | Lanza error con posición no válida | ✅ PASSED |
-
-#### 📸 Captura — Ejecución de pytest (9 tests pasados):
+#### 📸 Ejecución de pytest
 
 ![Resultados pytest](img/pytest-resultados.png)
 
-```bash
-git checkout -b feature/pruebas-pytest
-# ... desarrollo de tests ...
-git commit -m "test: agregar pruebas unitarias con pytest para validaciones"
-git checkout develop
-git merge feature/pruebas-pytest
-```
-
 ---
 
-### 🏁 3.6 Release 1.0.0
+### 3.5 Release 1.0.0
 
-Se creó la rama `release/1.0.0` desde `develop`, se realizó el merge hacia `main` y se etiquetó con el tag `v1.0.0`.
+Se creó la rama `release/1.0.0` desde `develop`, se realizó el merge hacia `main` con `--no-ff` y se etiquetó con `v1.0.0`.
 
-```bash
-git checkout develop
-git checkout -b release/1.0.0
-git commit --allow-empty -m "release: version 1.0.0"
-
-# Merge a main y creación del tag
-git checkout main
-git merge release/1.0.0
-git tag -a v1.0.0 -m "Release version 1.0.0"
-git push origin main
-git push origin v1.0.0
-
-# Merge de vuelta a develop
-git checkout develop
-git merge release/1.0.0
-git push origin develop
-```
-
-#### 📸 Captura — Historial de Git con Gitflow completo:
+#### 📸 Historial Gitflow
 
 ![Git log](img/gitflow-log.png)
 
 ---
 
-## 📊 4. Resumen de Ramas y Commits
+## 4. Conclusiones
 
-| Rama | Commit | Tipo |
-|---|---|---|
-| `main` | `chore: estructura inicial del proyecto` | Inicial |
-| `feature/validacion` | `feat: crear funciones de validacion CSV y utilidades de datos` | Feature |
-| `feature/app-principal` | `feat: crear aplicacion principal Streamlit con carga CSV y graficas` | Feature |
-| `feature/visualizacion-tabular` | `feat: agregar visualizacion tabular con filtro de registros` | Feature |
-| `feature/pruebas-pytest` | `test: agregar pruebas unitarias con pytest para validaciones` | Test |
-| `release/1.0.0` | `release: version 1.0.0` | Release |
+**Conclusión 1 — Aislamiento de funcionalidades mediante ramas feature:** Gitflow permite desarrollar cada funcionalidad de forma aislada en su propia rama `feature/*`, lo que evita que un error en una funcionalidad en desarrollo afecte al código estable de `develop` o `main`. En este proyecto, las funciones de validación, la aplicación principal, la visualización tabular y las pruebas se desarrollaron de forma independiente, y cada una fue integrada a `develop` solo cuando estaba completa y funcional. Este aislamiento reduce significativamente el riesgo de introducir regresiones en el código base.
+
+**Conclusión 2 — Trazabilidad del historial de cambios:** El uso de ramas nombradas con convención (`feature/`, `release/`) junto con mensajes de commit descriptivos (`feat:`, `test:`, `release:`) y merges explícitos con `--no-ff` genera un historial de Git no lineal que permite reconstruir exactamente qué se hizo, cuándo y por qué. Esto es especialmente valioso en equipos de trabajo donde múltiples desarrolladores contribuyen al mismo proyecto.
+
+**Conclusión 3 — Separación entre desarrollo y producción:** La rama `develop` actúa como zona de integración donde se prueban todas las funcionalidades juntas antes de promoverlas a `main` mediante un `release`. Esto garantiza que la rama `main` siempre contiene código estable y listo para producción. La rama `release` agrega una capa adicional de control al congelar el código para revisión final antes de la publicación.
 
 ---
 
-## 🧠 5. Conclusiones
+## 5. Repositorios
 
-### 📍 Conclusión 1 — Aislamiento de funcionalidades mediante ramas feature
-
-Gitflow permite desarrollar cada funcionalidad de forma aislada en su propia rama `feature/*`, lo que evita que un error en una funcionalidad en desarrollo afecte al código estable de `develop` o `main`. En este proyecto, las funciones de validación, la aplicación principal, la visualización tabular y las pruebas se desarrollaron de forma independiente, y cada una fue integrada a `develop` solo cuando estaba completa y funcional. Este aislamiento reduce significativamente el riesgo de introducir regresiones en el código base.
-
-### 📍 Conclusión 2 — Trazabilidad y control del historial de cambios
-
-El uso de ramas nombradas con convención (`feature/`, `release/`) junto con mensajes de commit descriptivos que siguen el estándar Conventional Commits (`feat:`, `test:`, `release:`) genera un historial de Git que permite reconstruir exactamente qué se hizo, cuándo y por qué. Esto es especialmente valioso en equipos de trabajo donde múltiples desarrolladores contribuyen al mismo proyecto y necesitan entender el contexto de cada cambio sin tener que revisar el código línea por línea.
-
-### 📍 Conclusión 3 — Separación clara entre desarrollo y producción
-
-La rama `develop` actúa como zona de integración donde se prueban todas las funcionalidades juntas antes de promoverlas a `main` mediante un `release`. Esto garantiza que la rama `main` siempre contiene código estable, verificado y listo para producción. En un entorno profesional real, este modelo permite realizar despliegues controlados y predecibles, minimizando el impacto de errores en los usuarios finales. La rama `release` agrega una capa adicional de control al congelar el código para revisión final antes de la publicación.
-
----
-
-## 🔗 6. Repositorios
-
-| Integrante | URL del Repositorio |
+| Integrante | URL |
 |---|---|
 | Andre Yamada | https://github.com/and95yam/streamlit-penguins-dashboard |
-| Ruperto Cisneros | https://github.com/srcisneros/streamlit-penguins-dashboard-Public.git |
+| Ruperto Cisneros | https://github.com/srcisneros/streamlit-penguins-dashboard-Public |
 
 ---
 
-> 📅 **Fecha de entrega:** 8 de Julio del 2026
