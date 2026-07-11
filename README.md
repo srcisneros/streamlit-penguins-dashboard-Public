@@ -1,6 +1,26 @@
 # 📊 Streamlit Penguins Dashboard
 
-Aplicación web interactiva desarrollada con **Streamlit** para el análisis exploratorio del dataset **Palmer Penguins**, implementada aplicando el flujo de trabajo **Gitflow**.
+<p align="center">
+  <img src="img/dashboard-principal.png" alt="Dashboard Streamlit Penguins" width="750">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python">
+  <img src="https://img.shields.io/badge/Streamlit-Dashboard-red?style=for-the-badge&logo=streamlit">
+  <img src="https://img.shields.io/badge/Pandas-Data%20Analysis-purple?style=for-the-badge&logo=pandas">
+  <img src="https://img.shields.io/badge/Plotly-Interactive%20Charts-orange?style=for-the-badge&logo=plotly">
+  <img src="https://img.shields.io/badge/Pytest-Unit%20Testing-green?style=for-the-badge&logo=pytest">
+</p>
+
+---
+
+## 🌟 Descripción General
+
+**Streamlit Penguins Dashboard** es una aplicación web interactiva desarrollada con **Streamlit** para realizar análisis exploratorio de datos sobre el dataset **Palmer Penguins**.
+
+El sistema permite cargar archivos CSV, visualizar datos de forma dinámica, generar gráficos interactivos y validar el funcionamiento del código mediante pruebas unitarias con **pytest**.
+
+Este proyecto fue desarrollado como parte de la asignatura de **Control de Versiones**, aplicando el flujo de trabajo **Gitflow** con ramas `feature/*`, `develop`, `release/*` y `main`.
 
 ---
 
@@ -85,5 +105,6 @@ main ← release/1.0.0 ← develop ← feature/validacion
 | Ruperto Cisneros | Desarrollo y documentación |
 
 ---
+
 
 
