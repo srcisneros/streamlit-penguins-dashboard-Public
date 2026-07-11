@@ -1,4 +1,4 @@
-# 🐧📊 Streamlit Penguins Dashboard
+# 📊 Streamlit Penguins Dashboard
 
 <p align="center">
   <img src="img/dashboard-principal.png" alt="Dashboard Streamlit Penguins" width="750">
